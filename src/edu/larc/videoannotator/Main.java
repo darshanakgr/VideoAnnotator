@@ -7,7 +7,11 @@ package edu.larc.videoannotator;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
@@ -19,6 +23,13 @@ import org.opencv.videoio.VideoCapture;
 public class Main {
     public static void main(String[] args) {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
         
         new Thread(new Runnable() {
             @Override
