@@ -82,14 +82,16 @@ public class MainUIForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(900, 600));
-        setMinimumSize(new java.awt.Dimension(900, 600));
-        setPreferredSize(new java.awt.Dimension(900, 600));
-        setResizable(false);
-        setSize(new java.awt.Dimension(900, 600));
+        setMaximumSize(new java.awt.Dimension(1625, 819));
+        setMinimumSize(new java.awt.Dimension(1625, 819));
+        setPreferredSize(new java.awt.Dimension(1625, 819));
+        setSize(new java.awt.Dimension(1625, 819));
 
         viewLabel.setBackground(new java.awt.Color(255, 255, 255));
-        viewLabel.setPreferredSize(new java.awt.Dimension(640, 480));
+        viewLabel.setMaximumSize(new java.awt.Dimension(1366, 768));
+        viewLabel.setMinimumSize(new java.awt.Dimension(1366, 768));
+        viewLabel.setName(""); // NOI18N
+        viewLabel.setPreferredSize(new java.awt.Dimension(1366, 768));
 
         openVideoBtn.setText("Open");
         openVideoBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +148,7 @@ public class MainUIForm extends javax.swing.JFrame {
                         .addComponent(timeText, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         controlPanelLayout.setVerticalGroup(
             controlPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,7 +273,7 @@ public class MainUIForm extends javax.swing.JFrame {
                         .addComponent(openVideoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pathText))
-                    .addComponent(viewLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(viewLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 1368, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(controlPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -288,13 +290,13 @@ public class MainUIForm extends javax.swing.JFrame {
                             .addComponent(openVideoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pathText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(viewLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE))
+                        .addComponent(viewLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 768, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(controlPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(annotatePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(19, 19, 19))
+                .addContainerGap())
         );
 
         getAccessibleContext().setAccessibleDescription("");
@@ -341,7 +343,7 @@ public class MainUIForm extends javax.swing.JFrame {
                             currentPosition = capture.get(Videoio.CAP_PROP_POS_MSEC);
                             timeText.setText(String.format("%2d:%2d", (int) currentPosition / 60000, (int) currentPosition % 60000));
                             // Resize the frame
-                            Imgproc.resize(frame, resizedFrame, new Size(640, 480));
+                            Imgproc.resize(frame, resizedFrame, new Size(1366, 768));
                             ImageIcon image = new ImageIcon(Main.Mat2BufferedImage(resizedFrame));
                             viewLabel.setIcon(image);
                             viewLabel.repaint();
@@ -386,7 +388,7 @@ public class MainUIForm extends javax.swing.JFrame {
                             currentPosition = capture.get(Videoio.CAP_PROP_POS_MSEC);
                             timeText.setText(String.format("%2d:%2d", (int) currentPosition / 60000, (int) currentPosition % 60000));
                             // Resize the frame
-                            Imgproc.resize(frame, resizedFrame, new Size(640, 480));
+                            Imgproc.resize(frame, resizedFrame, new Size(1366, 768));
                             ImageIcon image = new ImageIcon(Main.Mat2BufferedImage(resizedFrame));
                             viewLabel.setIcon(image);
                             viewLabel.repaint();
