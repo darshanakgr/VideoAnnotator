@@ -446,17 +446,26 @@ public class MainUIForm extends javax.swing.JFrame {
     }//GEN-LAST:event_startBtnActionPerformed
 
     private void pauseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pauseBtnActionPerformed
+        pauseBtn.setEnabled(false);
         if (playThread != null) {
             playThread.interrupt();
             playThread = null;
             pauseBtn.setText("Play");
+            pauseBtn.setEnabled(true);
         } else {
             playThread = new Thread(new Runnable() {
                 @Override
                 public void run() {
+                    pauseBtn.setEnabled(true);
                     boolean set = capture.set(Videoio.CAP_PROP_POS_MSEC, currentPosition);
                     while (capture.grab()) {
                         if (capture.retrieve​(frame)) {
+                            if (counter != 0) {
+                                capture.set(Videoio.CAP_PROP_POS_MSEC, (currentPosition + counter) < 0 ? 0: (currentPosition + counter));
+                                counter = 0;
+                                continue;
+                            }
+                            
                             currentPosition = capture.get(Videoio.CAP_PROP_POS_MSEC);
                             timeText.setText(String.format("%2d:%2d", (int) currentPosition / 60000, (int) currentPosition % 60000));
                             // Resize the frame
@@ -491,7 +500,7 @@ public class MainUIForm extends javax.swing.JFrame {
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         String logPath = filePath.replace(".mp4", ".txt");
         try {
-            FileWriter fileWriter = new FileWriter(logPath);
+            FileWriter fileWriter = new FileWriter(logPath, true);
             for (String annotation : annotations) {
                 fileWriter.write(annotation);
             }
