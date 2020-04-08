@@ -92,7 +92,6 @@ public class MainUIForm extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1625, 819));
         setMinimumSize(new java.awt.Dimension(1625, 819));
         setPreferredSize(new java.awt.Dimension(1625, 819));
-        setResizable(false);
         setSize(new java.awt.Dimension(1625, 819));
 
         viewLabel.setBackground(new java.awt.Color(255, 255, 255));
